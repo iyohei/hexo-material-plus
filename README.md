@@ -2,7 +2,7 @@
 
 本主题基于 material-x 主题魔改，原作者 小吴博客 ，在征得作者同意下开源。此版本在他的基础上加入了一些常用功能
 
-预览
+预览  hfanss.com
 
 ![](https://blog-1252958858.file.myqcloud.com/2019/03/demo1.png)
 
