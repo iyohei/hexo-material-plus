@@ -1,0 +1,1 @@
+curl -s https://raw.githubusercontent.com/xaoxuu/vim-cn.sh/v2/upload | sh
