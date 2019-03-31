@@ -84,7 +84,7 @@ widgets:
   # 博主信息，显示个人头像、格言、社交信息等
   author:
     enable: true #是否启用头像 false为不显示
-    avatar: /img/author.jpg # 头像，如果config中已经设置avatar了，这里可以不用写
+    avatar: /img/author.png # 头像，如果config中已经设置avatar了，这里可以不用写
     title: 幻凡ss # 博客名、头衔等等，居中显示
     motto:  IT小青年 | hfanss.com # 格言座右铭等等
     conum: '>20' #评论数 --------------------------------------------------------------------------------------------------< 更新条目
@@ -186,13 +186,13 @@ zhailu_length_phone: 80
 share: 
   # 分享标题
   title:  幻凡ss #可以是博客名称或者个人昵称
-  pic:  /img/author.jpg #可以填网站logo或导航栏logo图片地址 必须填绝对路径
+  pic:  /img/author.png #可以填网站logo或导航栏logo图片地址 必须填绝对路径
 
 # 网站地图
 sitemap: 
   path: sitemap.xml
 
-# 百度统计key
+# 百度统计key，百度统计中的代码获取  hm.src  最后面的后缀
 baidu_analytics_key: 4e950a5dd7243ac97e882fe04d3fa1f7
 # 百度自动推送
 baidu_push: true
@@ -222,8 +222,8 @@ recommended_posts:
 #valine评论
 valine: 
   enable: true
-  appId: 5GMAO3V5MqR9DTfMnd73m8zT-gzGzoHsz
-  appkey: f6Ve1tpYqYSBefe5xp0OCKxR
+  appId: 5GMAO3V5MqR
+  appkey: f6Ve1tpYqYS
   avatar: monsterid ##默认头像 参考 https://valine.js.org/avatar.html
   placeholder: 　 ## 留言板预设内容
   pageSize: 10 ##每页显示条数
