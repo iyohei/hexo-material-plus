@@ -1,0 +1,36 @@
+<% if (page.prev == 0) { %>
+<% if (config.carousel) { %>
+<div id="carousel-yc" class="swiper-container">
+    <div class="swiper-wrapper">
+	<% (config.carousel||[]).forEach(function(value){ %>
+	<% if (value.img && value.url) { %>
+	<div class="swiper-slide"><a href="<%= value.url %>"><img src="<%= value.img %>"></a></div>
+	<%}%>
+<%})%>	
+</div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>	
+<%}%>
+
+<% if (config.topnotice.enable === true) { %>
+
+	<div id="notice-bar-off" class="notice-bar text-container">
+	<!-- <img class="notice-bar-img" src="<%= config.topnotice.img %>"/> -->
+	&nbsp;<i class="fa fa-volume-down" aria-hidden="true"></i>&nbsp;
+
+		<a href="<%= config.topnotice.link %>">
+			<%= config.topnotice.content %>
+		</a>
+	</div>
+
+<!-- 显示时间 <span id="myclock"></span> -->
+<!-- 生日蛋糕logo：https://img.vim-cn.com/fe/57a2a4e17fe41e6b19a7d3b67d2f4da215cc48.png -->
+<!-- 生日祝福语：生日快乐！今天是小吴博客博主的生日！非常感谢大家对我的祝福！ -->
+
+<% } %>
+<%}%>
+<%- partial('_partial/archive') %>
+
+

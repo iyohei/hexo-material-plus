@@ -1,0 +1,16 @@
+<section class='m_widget notice'>
+<div class="celan-title"><div class="celan-title-i"><i style="color:#0099FF" class="fa fa-bell fa-fw" aria-hidden="true"></i></div>本站公告</div>
+    <div class='content'>
+        <ul class="entry" id="notice">
+<% (config.widgets.notice||[]).forEach(function(item){ %>
+            <li><a class="flat-box">
+                <div onclick="swal('<%= item.name %>', '<%= item.content %>','<%= item.type %>');" class='name' title="<%= item.name %>">
+                    <i class="fa fa-circle-o" aria-hidden="true"></i>
+                        &nbsp;<%= item.name %>
+                    </div>
+                </a></li>
+            <% }) %>
+
+        </ul>
+    </div>
+</section>

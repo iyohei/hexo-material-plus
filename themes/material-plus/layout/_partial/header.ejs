@@ -1,0 +1,66 @@
+<header class="l_header" id="no-header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='<%= url_for("/") %>' >
+				<img class="xwbk-logo" src="<%= config.nav_logo %>">
+			</a>
+				<div class='menu'>
+					<ul class='h-list'>
+                        <% if (config.nav_menu) { %>
+    						<% (config.nav_menu || []).forEach(function(value){ %>
+
+    							<!-- 导航栏图标和菜单 -->
+    							<li>
+    								<a class='nav-<%=value.slug%> flat-box' href='<%=url_for(value.url)%>'>
+    									<%=value.name%>
+    								</a>
+    							</li>
+    							<!-- <img class="hot_gif" src="/img/hot.gif"> -->
+    						<%})%>
+        			 <% } %>
+
+				
+
+					</ul>
+				</div>				
+			
+			<% if (config.search.enable === true) { %>
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索内容"/>
+						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			<% } %>
+			<ul class='switcher h-list'>
+				<% if (config.search.enable === true) { %>
+					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				<% } %>&nbsp;&nbsp;
+				<li class='s-menu'><a class="fa fa-bars fa-fw" href='javascript:void(0)'></a></li>&nbsp;&nbsp;
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+			</a>
+		</div>
+	</div>	
+
+</header>
+	<aside class="menu-phone">
+		<nav>
+      <ul>
+          <% if (config.nav_menu) { %>
+              <% (config.nav_menu || []).forEach(function(value){ %>
+                  <li>
+                      <a class='nav-<%=value.slug%> flat-box nav flat-box' href='<%=url_for(value.url)%>'>
+                      <%=value.name%>
+                      </a>
+                  </li>
+                  <!-- <img class="hot_gif_phone" src="/img/hot.gif"> -->
+              <%})%>
+       <% } %>
+       
+      </ul>
+		</nav>
+	</aside>

@@ -1,0 +1,37 @@
+<%- partial('_partial/head') %>
+<body class="l_body">
+
+ <div classdivclass="d_out" onmouseover="this.className='d_over'"  onmouseout="this.className='d_out'">
+    <a title="飞回顶部" href="#0" class="cd-top">Top</a>
+ </div>
+
+    <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
+
+    <div>
+    <div class='container clearfix'>
+        <div class='l_main'>
+      <%- body %>
+        </div>
+        <aside class='l_side'>
+            <%- partial('_partial/side') %>
+        </aside>
+    </div>
+    </div>
+    <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+    <%- partial('_partial/scripts') %>
+
+<% if (config.copyTips.enable === true) { %>
+<script>document.body.oncopy = function() { swal("<%= config.copyTips.title%>", "<%= config.copyTips.content%>","success");};</script>
+<% } %>
+
+<script>
+    document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState == 'hidden') {
+        normal_title = document.title;
+        document.title = '<%= config.changeTitle %>';
+    } else document.title = normal_title;
+});
+</script>
+
+<div class="cover"></div>
+</body>

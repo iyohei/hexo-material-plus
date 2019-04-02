@@ -1,0 +1,16 @@
+.l_side {
+    width: @width_sidebar;
+    margin-bottom: 100px;
+    float: right;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    @media(max-width: @on_phone) {
+        margin: @gap 0 0;
+        width: 100%;
+    }
+
+}

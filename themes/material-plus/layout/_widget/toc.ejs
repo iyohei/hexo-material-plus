@@ -1,0 +1,11 @@
+
+<% if(page.content && page.toc!==false && toc(page.content).length > 0){ %>
+    <section class='m_widget toc-wrapper'>
+        <div class="celan-title"><div class="celan-title-i"><i style="color:#0099FF" class="fa fa-list-ul"></i></div>目录</div>
+<!--             <div class='wrapper'><a style="margin-right: 30px;" class="s-toc rightBtn" title="固定到顶部"
+             rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fa fa-thumbtack fa-fw"></i></a></div> -->
+        <div class='content'>
+            <%- toc(page.content, {list_number: false}) %>
+        </div>
+    </section>
+<% } %>

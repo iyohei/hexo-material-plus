@@ -1,0 +1,17 @@
+<section class='m_widget categories'>
+    <div class="celan-title"><div class="celan-title-i"><i style="color:#0099FF" class="fa fa-th-large fa-fw"></i></div>文章分类</div>
+    <div class='content'>
+        <% if (site.categories.length){ %>
+            <ul class="entry">
+                <% site.categories.sort('name').each(function(item){ %>
+                    <li><a class="flat-box" href="<%= url_for(item.path) %>">
+                        <div class='name'>
+                            <i class="fa fa-bookmark" aria-hidden="true"></i>
+                            &nbsp;&nbsp;<%= item.name %>
+                        </div>
+                        <div class='badge'><%= item.posts.length %></div></a></li>
+                <% }); %>
+            </ul>
+        <% } %>
+    </div>
+</section>

@@ -1,0 +1,31 @@
+<% if (config.widgets){ %>
+
+    <% if (config.widgets.author){ %>
+        <%- partial('../_widget/author') %>
+    <% } %>
+
+    <% if (config.widgets.toc){ %>
+        <%- partial('../_widget/toc') %>
+    <% } %>
+
+    <% if (config.widgets.notice){ %>
+        <%- partial('../_widget/notice') %>
+    <% } %>
+
+    <% if (config.widgets.categories){ %>
+        <%- partial('../_widget/categories') %>
+    <% } %>
+
+    <% if (config.widgets.tagcloud){ %>
+        <%- partial('../_widget/tagcloud') %>
+    <% } %>
+
+    <% if (config.widgets.musicid){ %>
+        <%- partial('../_widget/music') %>
+    <% } %>
+
+    <% if (config.widgets.links){ %>
+        <%- partial('../_widget/links') %>
+    <% } %>
+    
+<% } %>
