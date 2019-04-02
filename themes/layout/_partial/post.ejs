@@ -1,0 +1,40 @@
+<article class="hover-bgcolor post <%= (post.title) ? "" : "no-title" %>">
+<% if(post.topimg == true){ %>
+    <img class="topnew-img" src="/img/top.png">
+<% } %>
+
+<% if(post.newimg == true){ %>
+    <img class="topnew-img" src="/img/new.png">
+<% } %>      
+
+        <section class="meta mpost">
+   <%- partial('categories',{post:post}) %>
+        <h2>
+            <a title="点击阅读全文" href="<%- url_for(post.path) %>">
+               <span class="post-title"><b><%= post.title %></b></span>
+            </a>
+        </h2>
+            <span class="post-data"><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;<%= date(post.date, config.date_format) %>
+            &nbsp;&nbsp;<i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;<%= config.widgets.author.title %>&nbsp;
+            </span>&nbsp;&nbsp;
+    </section>
+
+        <section class="typo zdydl">
+        <div>
+            <a title="点击阅读全文" href="<%- url_for(post.path) %>">
+                <% if(post.img) { %>
+                    <img class="post_list_img" src="<%= post.img %>">
+                <% } else { %>
+                    <img class="post_list_img" src="/img/post-default-img.png">
+                <% } %>
+            </a>
+        </div>
+
+    <a title="点击阅读全文" style="text-decoration: none;" href="<%- url_for(post.path) %>">
+        <div class="zdya">
+        <%- post.zhailu %>
+        </div>
+    </a>
+    </section>
+</article>
+

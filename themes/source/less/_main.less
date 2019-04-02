@@ -1,0 +1,304 @@
+.l_main {
+    width: ~"calc(100% - 1 * @{width_sidebar})";
+    padding-right: @gap;
+    float: left; 
+    margin-bottom: 50px;
+    @media(max-width: @on_phone) {
+        margin-bottom: 10px;
+    }
+    .post-list {
+        position: relative;
+        margin: 0px auto;
+        // columns: 400px;
+        column-gap: 0;
+        @media(max-width: @on_phone) {
+            margin: 0;
+        }
+    }
+    #comments {
+        position: relative;
+        // padding-top: 1.5*@gap;
+        @media(max-width: @on_phone) {
+            // padding-top: @gap;
+    }
+}
+    .post-wrapper{
+        // for firefox
+        column-break-inside: avoid;
+        break-inside: avoid-column;
+        overflow: hidden;
+}
+
+    .hover-bgcolor {
+        &:hover {
+            background: #f9f9f9;
+        }        
+    }
+
+    .mobile-post() {
+        .post {
+            .meta {
+                margin-bottom: 10px;
+                .title {
+                    font-size: @fontsize_article_title_phone;
+                }
+            }
+            .full-width {
+                margin-left: -@gap;
+                margin-right: -@gap;
+                padding-left: @gap;
+                padding-right: @gap;
+                width:~"calc(100% + 2 * @{gap})"
+            }
+            .auto-padding {
+                padding-left: @gap;
+                padding-right: @gap;
+                border-bottom-left-radius: @border_radius;
+                border-bottom-right-radius: @border_radius;
+            }
+            img,
+            .highlight {
+                // width:~"calc(100% + 2 * @{gap})";
+                // display: block;
+            }
+            .highlight{
+              margin-left: 0*@gap;
+              margin-right: 0*@gap;
+              width:~"calc(100% - 0 * @{gap})";
+            }
+            @media(max-width:@on_phone) {
+              .highlight {
+                margin-left: 0*@gap;
+                margin-right: 0*@gap;
+                width:~"calc(100% - 0 * @{gap})";
+              }
+              .auto-padding {
+                  padding-left: @gap;
+                  padding-right: @gap;
+                  border-bottom-left-radius: 0;
+                  border-bottom-right-radius: 0;
+              }
+            }
+
+
+        }
+    }
+    .post-wrapper {
+        
+        .mobile-post();
+        @media(max-width:@on_phone) {
+            padding-left: 0;
+            padding-right: 0;
+            
+        }
+    }
+
+    .mpost {
+        margin-left: 130px;
+        @media(max-width: @on_phone) {
+           margin-left: 0px;
+        }
+    }
+
+    .post {
+        position: relative;
+        margin: 0 auto;
+        padding: 25px 30px;
+        //max-width: 768px;
+        background: @theme_bg_card;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        h1{
+            font-weight: bold;
+            font-size: 25px;
+            line-height: @lineheight_base;
+            color: #444;
+            margin: 0 -30px;
+            border-left: 10px solid @theme_text_header;
+            border-right: 10px solid @theme_text_header;
+            text-align: center;
+			background: #f8f8f8;
+        @media(max-width: @on_phone) {
+            margin: 0 -15px;
+            }
+        }
+        @media(max-width: @on_phone) {
+            padding: 30px 15px;
+            border-radius: 4px;
+        }
+        .meta {
+            .title {
+                left: 0;
+                text-align: left;
+                @media(max-width: @on_phone) {
+                    font-size: @fontsize_article_title_phone;
+                }
+                &:before {
+                    // content: "#";
+                }
+
+                a {
+                    display: inline;
+                    line-height: @lineheight_base;
+                    font-weight: normal;
+                    color: #000000;
+                    text-decoration: none;
+                    font-size: @fontsize_article_title;
+                    @media(max-width: @on_phone) {
+                        font-size: 20px;
+                        display: block;
+                        overflow: hidden;
+                        word-break: keep-all;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+                    &:hover {
+                        color: @theme_text_highlight;;
+                    }
+                }
+            }
+
+        .post-title {
+            color: #555;
+            font-size: 20px;                       
+            display: block;
+            overflow: hidden;
+            word-break: keep-all;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            line-height: 27px;
+            .enable-trans();
+            @media(max-width: @on_phone) {
+                font-size: 16px;
+            }            
+            &:hover {
+                color: @theme_text_highlight;;
+            }   
+        }
+
+        .post-data {
+            font-size: 12px;
+            color: #696464;
+            margin-left: 100px;
+            @media(max-width: @on_phone) {
+                margin-left: 0px;
+            } 
+
+        }
+        .cats {
+                font-size: 15px;
+                border: 1px solid #0099FF;
+                padding: 0px 6px;
+                margin-right: 6px;
+                float: left;
+                margin-left: 100px;
+                &:hover {
+                    .enable-trans();
+                    background-color: #dcf3ff;
+                }
+             @media(max-width: @on_phone) {
+                margin-left: 0px;
+            }                
+         }
+
+            .cats {
+                &:before {
+                    color: #b5b5b5;
+                    display: inline-block;
+                    margin: 0 5px;
+                }
+                a {
+                        font-size: 14px;
+                        color: @theme_text_link;
+                }
+
+            }
+            time {
+                font-size: 14px;
+                color: #99;
+                margin-bottom: 20px;
+                @media(max-width:@on_phone) {      
+                    color: #666666;
+                    margin-bottom: -20px;
+                }
+
+
+            }
+        }
+        .full-width,.highlight{
+            margin-left: 0*@gap;
+            margin-right: 0*@gap;
+            width:~"calc(100% - 0 * @{gap})";
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+    }
+    @media(max-width:@on_phone) {
+        padding-right: 0;
+        @media(max-width: @on_phone) {
+            width: 100%;
+        }
+        .mobile-post();
+    }
+
+    .prev-next{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin: 0;
+        background-color: #f7f7f7;
+        .prev{
+            text-align: left;
+            border-top-right-radius: 32px;
+            border-bottom-right-radius: 32px;
+        }
+        .fenge{
+            margin-top: auto;
+            margin-bottom: auto;
+            width:1px;
+            height:20px;
+            background:#B5B5B5;
+        }
+        .next{
+            text-align: right;
+            border-top-left-radius: 32px;
+            border-bottom-left-radius: 32px;
+        }
+        p{
+            margin: @gap;
+        }
+        h6{
+            color: #bbb;
+        }
+        a{
+            color: #888;
+            font-weight: normal;
+            &:hover{
+            .enable-trans();
+            text-decoration: none;
+            }
+            @media(max-width: @on_phone) {
+                font-size: 15px;
+            }
+        }                    
+        section{
+            color: fade(@theme_text_main, 80%);
+            padding: 15px;
+            border-radius: @border_radius;
+            &:hover {
+                color: @theme_text_highlight;
+            }
+        }
+        @media(max-width:@on_phone) {
+            section{
+                border-radius: 0;
+            }
+        }
+
+    }
+
+}

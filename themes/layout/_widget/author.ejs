@@ -1,0 +1,74 @@
+<% if(config.widgets.author.enable != false) { %>
+    <section class='m_widget author'>
+        <div class="avatar-bg"></div>
+        <% if(config.widgets.author.avatar || config.avatar) { %>
+            <div class='header'>
+                <img class='avatar' src='<%= url_for(config.widgets.author.avatar || config.avatar) %>'/>
+            </div>
+        <%} %>
+        <div class='content'>
+            <% if (config.widgets.author.title){ %>
+               <center><h1><%= config.widgets.author.title %></h1></center>
+            <% } %>
+            <% if (config.widgets.author.motto){ %>
+                <div>
+                    <center><span><a class="ffff" href="/about/index.html"><%= config.widgets.author.motto %></a></span></center>
+                </div>
+            <% } %>
+        
+        <% if(config.widgets.social.enable != false) { %>
+
+            <!-- 不需要的将那一段删除就可以了 -->
+
+            <div class="social-wrapper">
+
+             <a style="background-color: #27ccc0;" title="邮箱" href="<%= config.mail %>" class="social-icon flat-box" target="_blank" rel="external">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+            </a>
+
+             <a style="background-color: #12b7f5;" title="QQ" href="<%= config.qq %>" class="social-icon flat-box" target="_blank" rel="external">
+                <i class="fa fa-qq" aria-hidden="true"></i>
+            </a>
+             <a style="background-color: #f45a8d;" title="github" href="<%= config.github %>" class="social-icon flat-box" target="_blank" rel="external">
+                <i class="fa fa-github" aria-hidden="true"></i>
+            </a>
+            <a style="background-color: #EE2C2C;" title="CSDN" href="<%= config.csdn %>" class="social-icon flat-box" target="_blank" rel="external">
+                <i class="fa fa-codiepie" aria-hidden="true"></i>
+            </a>
+
+             <a style="background-color: #8c9496;" title="RSS订阅" href="/atom.xml" class="social-icon flat-box" target="_blank" rel="external">
+                <i class="fa fa-rss" aria-hidden="true"></i>
+            </a>
+
+            </div>
+             <% } %>
+
+            <div class="avatar-f" style="">
+                <span class="lrborder avatar-ff">
+                    <a href="/archives/index.html">
+                        文章&nbsp;<%= site.posts.length %>&nbsp;篇
+                    </a>
+                </span>
+                <span class="avatar-ff">
+                    <a href="/archives/index.html">
+                    标签&nbsp;<%= site.tags.length %>&nbsp;条
+                    </a>
+                </span>
+            </div>
+            <div class="avatar-f">
+                <span class="lrborder avatar-ff">
+                    <span id="busuanzi_container_site_pv">
+                        <a href="/about/index.html">
+                        访问&nbsp;<span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span>&nbsp;次
+                        </a>
+                    </span>
+                </span>
+                <span class="avatar-ff">
+                    <a href="/comment/index.html">
+                    评论&nbsp;<%= config.widgets.author.conum %>&nbsp;条
+                    </a>
+                </span>
+            </div>
+        </div>
+    </section>
+<% } %>

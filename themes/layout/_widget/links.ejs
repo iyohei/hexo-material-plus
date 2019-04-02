@@ -1,0 +1,21 @@
+<% if(is_home()==true||page.toc==false){ %>
+<section id="fixPara" class='m_widget links'>
+    <div class="celan-title"><div class="celan-title-i"><i style="color:#0099FF" class="fa fa-star fa-fw"></i></div>热门推荐</div>
+    <div class='content'>
+        <ul class="entry" id="links">
+            <% (config.widgets.links||[]).forEach(function(item){ %>
+                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="<%= url_for(item.url) %>">
+                    <div class='name'>
+                        <% if(item.avatar) { %>
+                            <img src="<%= item.avatar %>">
+                        <% } else { %>
+                            <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+                        <% } %>
+                        &nbsp;&nbsp;<%= item.name %>
+                    </div>
+                </a></li>
+            <% }) %>
+        </ul>
+    </br>
+</section>
+<% } %>

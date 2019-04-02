@@ -1,0 +1,79 @@
+<% if (config.totem === true) { %>
+<!---
+ *　　　　　　　　┏┓　　　┏┓+ +
+ *　　　　　　　┏┛┻━━━┛┻┓ + +
+ *　　　　　　　┃　　　　　　　┃ 　
+ *　　　　　　　┃　　　━　　　┃ ++ + + +
+ *　　　　　　 ████━████+
+ *　　　　　　　┃　　　　　　　┃ +
+ *　　　　　　　┃　　　┻　　　┃
+ *　　　　　　　┃　　　　　　　┃ + +
+ *　　　　　　　┗━┓　　　┏━┛
+ *　　　　　　　　　┃　　　┃　　　　　　　　　　　
+ *　　　　　　　　　┃　　　┃ + + + +
+ *　　　　　　　　　┃　　　┃　　　　　　　
+ *　　　　　　　　　┃　　　┃ + 　　　　神兽镇楼,不宕机、无BUG　
+ *　　　　　　　　　┃　　　┃
+ *　　　　　　　　　┃　　　┃　　+　　　　　　　　　
+ *　　　　　　　　　┃　 　　┗━━━┓ + +
+ *　　　　　　　　　┃ 　　　　　　　┣┓
+ *　　　　　　　　　┃ 　　　　　　　┏┛
+ *　　　　　　　　　┗┓┓┏━┳┓┏┛ + + + +
+ *　　　　　　　　　　┃┫┫　┃┫┫
+ *　　　　　　　　　　┗┻┛　┗┻┛+ + + +
+--->
+<%}%>
+
+<!DOCTYPE html>
+<html lang="<%= config.language %>">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <%
+    var title = page.title;
+    if (is_archive()) {
+      title = '归档';
+      if (is_month())
+        title += ': ' + page.year + '/' + page.month;
+      else if (is_year())
+        title += ': ' + page.year;
+    }
+    else if (is_category()){
+      title = '分类: ' + page.category;
+    }
+    else if (is_tag()){
+      title = '标签: ' + page.tag;
+    }
+  %>
+  <title><% if(title){ %><%= title %>-<% } else if (page.titleme) { %><%= (page.titleme) %><% } %><%= config.title %>
+  </title>
+  <meta name="description" content="<%= config.description %>" />
+  <% if (page.keywords && config.keywords){ %>
+  <meta name="keywords" content="<%= page.keywords %>, <%= config.keywords %>">
+  <% } else if (page.keywords) { %>
+  <meta name="keywords" content="<%= page.keywords %>">
+  <% } else if (config.keywords) { %>
+  <meta name="keywords" content="<%= config.keywords %>">
+  <% } %>
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="google-site-verification" content="q4xnHYM3-sVfNnyEwMGqknU2CTdojzJvQ5nGfN3EJv8" />
+  <link rel="shortcut icon" href="<%= config.shortcut_icon %>" />
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.bootcss.com/Swiper/4.4.6/css/swiper.min.css">
+  <link href="https://cdn.bootcss.com/Buttons/2.0.0/css/buttons.min.css" rel="stylesheet">
+ <%- css('style.css') %>
+ <% if (config.baidu_analytics_key) { %>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+<% } %>
+
+</head>

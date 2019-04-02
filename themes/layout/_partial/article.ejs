@@ -1,0 +1,143 @@
+<article id="<%= post.layout %>-<%= post.slug %>" class="post white-box article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+    <section class='meta'>
+
+        <h1 class="title">
+            <center><%= post.title %></center>
+        </h1>
+
+<% if(post.dtime!==false){ %>
+ <center>
+    <time>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+    <span>发表于 </span><%= date(post.date, config.date_format) %>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;
+    阅读 &nbsp;(
+    <span id="busuanzi_value_page_pv">计算中...</span>&nbsp;)
+    </span>
+    </time>
+</center>
+<% } %>
+
+<% if(post.zdyhr!==false){ %>
+    <hr class="zdyhr">
+<% } %>       
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <%- post.content %>
+        </div>
+        <br><br>
+<% if(post.latup!==false){ %>
+<div title="未经允许不得转载" class="post-copyright">未经允许不得转载： <%= config.title %> » <span style="color: #ce8134"><%= post.title %></span></div>
+<% } %>
+
+<% if(post.share!==false){ %>
+ 
+<div class="share">
+<span style="vertical-align: text-bottom;font-size:14px;">分享到：</span>
+<a title="分享到微博" href="javascript:" onClick="window.open('http://service.weibo.com/share/share.php?url=<%= page.permalink %>&sharesource=weibo&title=【<%= post.title %> - <%= config.title %>】 <%- post.zhailu %>...&pic=<%= post.img %>&appkey=2706825840','','height=400,width=711,left=100,right=100,scrollbars=yes,status=yes')">
+
+<span class="iconfont icon-weibo"></span>
+
+<a title="分享到QQ空间" href="javascript:" onClick="window.open('https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<%= page.permalink %>&sharesource=qzone&title=【<%= post.title %> - <%= config.title %>】&pics=<%= post.img %>&summary=<%= post.zhailu %>...','','height=598,width=711,scrollbars=yes,status=yes')">
+
+<span class="iconfont icon-qqkongjian"></span>
+
+<a title="分享到QQ好友" href="javascript:" onClick="window.open('http://connect.qq.com/widget/shareqq/index.html?url=<%= page.permalink %>&title=【<%= post.title %> - <%= config.title %>】&pics=<%= post.img %>&summary=<%= config.title %>&desc=','','height=598,width=711,scrollbars=yes,status=yes')">
+
+<span class="iconfont icon-QQ"></span>
+
+</div>
+
+<% } %>
+
+       <% if (post.tags && post.tags && post.tags.each) { %>
+            <div class="article-tags tags">
+                <% post.tags.each(function(item){ %>
+                   <a href="<%- url_for(item.path) %>"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;<%=item.name %></a>
+                <%})%>
+            </div>
+        <% } %>
+
+        <% if(post.prev || post.next){ %>
+            <div class="prev-next">
+                <% if(post.prev){ %>
+                    <section class="prev" >
+                        <span class="art-item-left">
+                            <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h4>
+                                <a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
+                                  <% if(post.prev.title){ %>
+                                      <%= post.prev.title %>
+                                  <% } else if (post.prev.date) { %>
+                                      <%= date(post.prev.date, config.date_format) %>
+                                  <% } %>
+                                </a>
+                            </h4>
+                    </section>
+                    <%} %>
+                    <div class="fenge">
+                    </div>
+                <% if(post.next){ %>
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="<%=url_for(post.next.path)%>" rel="next" title="<%=post.next.title%>">
+                                    <% if(post.next.title){ %>
+                                        <%= post.next.title %>
+                                    <% } else if (post.next.date) { %>
+                                        <%= date(post.next.date, config.date_format) %>
+                                    <% } %>
+                                </a>
+                            </h4>
+                        </div>
+                    </section>
+                        <%} %>
+            <%} %>
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+<% if (post && ((config.recommended_posts && config.recommended_posts.autoDisplay == false && post.comments != false) || (post.comments && (config.valine.enable)) )) { %>
+    <article class="post white-box comments">
+        <section class="article typo">
+            <% if (config.recommended_posts && config.recommended_posts.autoDisplay == false && post.recommended_posts != false) { %>
+                <%- partial('post/recommended_posts', {page: post, site: site}) %>
+            <% } %>
+
+            <% if (config.valine.enable && config.valine.appId && config.valine.appkey){ %>
+                <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+                <script src='https://unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+                <h4><i class="fa fa-comments fa-fw" aria-hidden="true"></i>&nbsp;发表评论</h4>
+                <div class="subtitle">
+                  <h6><b>文明评论，请勿灌水。</b></b></b>
+                <div>
+                <div id="vcomments" style="background: url('/img/commentbox2.jpg') top no-repeat;"></div>
+                <script>
+                  new Valine({
+                        el:'#vcomments',
+                        appId:'<%=config.valine.appId %>',
+                        appKey:'<%=config.valine.appkey %>',
+                        placeholder:'<%=config.valine.placeholder %>',
+                        avatar:'<%=config.valine.avatar %>',
+                        pageSize:'<%=config.valine.pageSize %>'
+                    })
+                </script>
+        <% } %>
+
+        </section>
+    </article>
+<% } %>
+
+<script>
+    window.subData = {
+        title: '<%= post.title %>',
+        tools: true
+    }
+</script>
